@@ -1,0 +1,152 @@
+/* טל רחבי – שיווק דיגיטלי ו-AI
+   Converted from the "אתר טל רחבי" design canvas into a static site. */
+
+[hidden]{display:none !important}
+html{scroll-behavior:smooth}
+body{margin:0;background:#F9F7F3;-webkit-font-smoothing:antialiased}
+a{color:#282C2D;transition:color .3s,background-color .3s,border-color .3s,transform .3s,box-shadow .3s}
+a:hover{color:#4F6255}
+:focus-visible{outline:2px solid #4F6255;outline-offset:3px}
+.btn-solid:hover{background:#4F6255 !important;color:#F9F7F3 !important;transform:translateY(-2px);box-shadow:0 16px 32px -14px rgba(40,44,45,.5) !important}
+.btn-line:hover{border-color:#4F6255 !important;color:#4F6255 !important;transform:translateY(-2px)}
+.btn-ghost:hover{background:rgba(249,247,243,.1) !important}
+.chip:hover{background:#FFFFFF !important;transform:translateY(-2px);box-shadow:0 10px 20px -12px rgba(40,44,45,.35)}
+.card{transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s}
+.card:hover{transform:translateY(-6px);box-shadow:0 40px 70px -40px rgba(40,44,45,.5) !important}
+.more{display:inline-flex;align-items:center;gap:8px;font-weight:600;text-decoration:none}
+.more:hover{gap:14px}
+
+@keyframes waveSlide{from{transform:translateX(0)}to{transform:translateX(-400px)}}
+.wave{animation:waveSlide 7s linear infinite}
+.wave2{animation-duration:11s;animation-direction:reverse}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.bob{animation:bob 6s ease-in-out infinite}
+.bob2{animation-duration:7.5s;animation-delay:-2s}
+.bob3{animation-duration:5s;animation-delay:-3.5s}
+@keyframes atom{0%,100%{transform:translate(0,0)}33%{transform:translate(3px,-5px)}66%{transform:translate(-3px,3px)}}
+.atom{transform-box:fill-box;transform-origin:center;animation:atom 7s ease-in-out infinite}
+.at2{animation-duration:9s;animation-delay:-3s}.at3{animation-duration:6s;animation-delay:-1.5s}.at4{animation-duration:10s;animation-delay:-5s}
+@keyframes flow{to{stroke-dashoffset:-40}}
+.bond{stroke-dasharray:3 7;animation:flow 2.4s linear infinite}
+@keyframes orbitRide{from{offset-distance:0%}to{offset-distance:100%}}
+.e1{offset-path:path("M60 300 A240 74 0 1 0 540 300 A240 74 0 1 0 60 300");animation:orbitRide 9s linear infinite}
+.e2{offset-path:path("M300 70 A70 230 0 1 1 300 530 A70 230 0 1 1 300 70");animation:orbitRide 12s linear infinite reverse}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(50%)}}
+.marq{animation:marq 40s linear infinite}
+@keyframes ride{from{offset-distance:0%}to{offset-distance:100%}}
+.ball{offset-path:path("M1200 150 C 1050 40, 950 40, 840 150 S 620 260, 520 150 S 300 40, 200 150 S 40 250, 0 160");offset-rotate:0deg;animation:ride 9s linear infinite}
+.b2{animation-delay:-2.25s}.b3{animation-delay:-4.5s}.b4{animation-delay:-6.75s}
+
+.dk{transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.deck:hover .dk1,.deck:focus-visible .dk1{transform:translateX(-128px) translateY(-6px) rotate(-18deg) !important}
+.deck:hover .dk2,.deck:focus-visible .dk2{transform:translateX(-44px) translateY(-14px) rotate(-6deg) !important}
+.deck:hover .dk3,.deck:focus-visible .dk3{transform:translateX(44px) translateY(-14px) rotate(6deg) !important}
+.deck:hover .dk4,.deck:focus-visible .dk4{transform:translateX(128px) translateY(-6px) rotate(18deg) !important}
+.deck:focus-visible{outline:2px solid #96AC9E;outline-offset:6px;border-radius:16px}
+.vf{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.vfan:hover .vf1{transform:translateX(-70%) rotateY(28deg) translateZ(-40px) !important}
+.vfan:hover .vf3{transform:translateX(70%) rotateY(-28deg) translateZ(-40px) !important}
+.vfan:hover .vf2{transform:translateZ(40px) !important}
+
+details summary{list-style:none;cursor:pointer}
+details summary::-webkit-details-marker{display:none}
+details[open] .plus{transform:rotate(45deg)}
+.plus{transition:transform .3s}
+
+.sec{position:relative;border-radius:48px 48px 0 0;margin-top:-48px;box-shadow:0 -28px 60px -40px rgba(40,44,45,.35);scroll-margin-top:60px}
+.bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:22px}
+.span4{grid-column:span 4;grid-row:span 2}.span2{grid-column:span 2}
+.aigrid{display:grid;grid-template-columns:minmax(0,1fr) 300px minmax(0,1fr);gap:56px 64px;align-items:center;position:relative}
+.ai1{grid-column:1;grid-row:1}.ai2{grid-column:3;grid-row:1}.ai3{grid-column:1;grid-row:2}.ai4{grid-column:3;grid-row:2}.ainuc{grid-column:2;grid-row:1 / span 2}
+@media (max-width:900px){.bento{grid-template-columns:1fr}.span4,.span2{grid-column:auto;grid-row:auto}.aigrid{grid-template-columns:1fr;gap:28px}.ai1,.ai2,.ai3,.ai4,.ainuc{grid-column:auto;grid-row:auto}.ainuc{order:-1}.aibonds{display:none}}
+@media (max-width:820px){.hero-vis{order:-1}}
+@media (max-width:640px){.hide-sm{display:none !important}.sec{border-radius:28px 28px 0 0;margin-top:-28px}}
+
+/* Scroll-driven reveals (browsers that support animation-timeline) */
+@supports (animation-timeline: view()){
+@keyframes rvIn{from{opacity:0;transform:translateY(70px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes rvTilt{from{opacity:0;transform:perspective(1200px) translateY(90px) rotateX(18deg)}to{opacity:1;transform:none}}
+@keyframes secOut{to{transform:scale(.93);filter:brightness(.92)}}
+@keyframes heroOut{to{transform:translateY(-60px) scale(.9);opacity:.2}}
+@keyframes draw{from{stroke-dashoffset:1600}to{stroke-dashoffset:0}}
+@keyframes nucIn{from{transform:scale(.4) rotate(-40deg);opacity:0}to{transform:none;opacity:1}}
+.rv{animation:rvIn linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
+.rv2{animation-range:entry 8% cover 34%}
+.rv3{animation-range:entry 16% cover 40%}
+.rvt{animation:rvTilt linear both;animation-timeline:view();animation-range:entry 0% cover 32%}
+.sec-in{animation:secOut linear both;animation-timeline:view();animation-range:exit 10% exit 100%;transform-origin:50% 0}
+.heroout{animation:heroOut linear both;animation-timeline:view();animation-range:exit 0% exit 100%}
+.tube{stroke-dasharray:1600;animation:draw linear both;animation-timeline:view();animation-range:entry 10% cover 50%}
+.nucin{animation:nucIn linear both;animation-timeline:view();animation-range:entry 0% cover 40%}
+}
+
+/* ── Intro sequence ──
+   The final (open) state is the default, so the page reads fine without JS.
+   script.js steps <html> through .p0 → .p1 → .p2 → (no class). */
+.intro{pointer-events:none;visibility:hidden}
+.p0 .intro,.p1 .intro{pointer-events:auto}
+.p0 .intro,.p1 .intro,.p2 .intro{visibility:visible}
+.door-l{transform:rotateY(78deg);opacity:0}
+.door-r{transform:rotateY(-78deg);opacity:0}
+.p0 .door,.p1 .door{transform:rotateY(0deg);opacity:1}
+.seam{opacity:0}
+.seam-on .seam{opacity:1}
+.ink{opacity:0}
+.p1 .ink{opacity:1}
+.ink-path{stroke-dashoffset:0}
+.p0 .ink-path{stroke-dashoffset:2400}
+.intro-tag{opacity:0;transform:translateY(14px)}
+.p1 .intro-tag{opacity:1;transform:translateY(0)}
+
+.site-header{background:rgba(249,247,243,.72);border-bottom:1px solid rgba(226,221,211,.7)}
+.p0 .site-header,.p1 .site-header{background:rgba(249,247,243,0);border-bottom-color:rgba(226,221,211,0)}
+.nav-fade{opacity:1}
+.p0 .nav-fade,.p1 .nav-fade{opacity:0;pointer-events:none}
+.logo-link{transform:translateY(0) scale(1)}
+.p0 .logo-link,.p1 .logo-link{transform:translateY(calc(50vh - 44px)) scale(3.6)}
+.logo-img{opacity:1;filter:blur(0);clip-path:inset(0 0 0 0)}
+.p0 .logo-img{opacity:0;filter:blur(16px);clip-path:inset(0 0 0 100%)}
+
+.hero{transform:scale(1)}
+.p0 .hero,.p1 .hero{transform:scale(1.08)}
+.hero-in{opacity:1;transform:translateY(0)}
+.p0 .hero-in,.p1 .hero-in{opacity:0;transform:translateY(40px)}
+.fade-in{opacity:1}
+.p0 .fade-in,.p1 .fade-in{opacity:0}
+.h1-line{transform:translateY(0%)}
+.p0 .h1-line,.p1 .h1-line{transform:translateY(110%)}
+.mol{opacity:1;transform:scale(1) rotate(0deg)}
+.p0 .mol,.p1 .mol{opacity:0;transform:scale(.55) rotate(-25deg)}
+
+/* Mouse parallax: script.js sets --mx / --my (-1…1) on #top */
+.par-back{transform:translate(calc(var(--mx,0) * 8px),calc(var(--my,0) * 8px))}
+.par-front{transform:translate(calc(var(--mx,0) * -16px),calc(var(--my,0) * -16px))}
+.par-orb{transform:translate(calc(var(--mx,0) * -24px),calc(var(--my,0) * -24px))}
+.float-c1{opacity:1;transform:translate(calc(var(--mx,0) * -34px),calc(var(--my,0) * -34px)) translateX(0)}
+.p0 .float-c1,.p1 .float-c1{opacity:0;transform:translate(calc(var(--mx,0) * -34px),calc(var(--my,0) * -34px)) translateX(-40px)}
+.float-c2{opacity:1;transform:translate(calc(var(--mx,0) * -20px),calc(var(--my,0) * -20px)) translateX(0)}
+.p0 .float-c2,.p1 .float-c2{opacity:0;transform:translate(calc(var(--mx,0) * -20px),calc(var(--my,0) * -20px)) translateX(40px)}
+
+/* ── Menu ── */
+.burger{border:1px solid #D9D3C8;background:rgba(255,255,255,.5)}
+.burger span{background:#282C2D}
+.menu-open .burger{border-color:#282C2D;background:#282C2D}
+.menu-open .burger span{background:#F9F7F3}
+.menu-open .bar1{transform:translateY(4px) rotate(45deg)}
+.menu-open .bar2{transform:translateY(-4px) rotate(-45deg)}
+.menu{clip-path:circle(0% at calc(100% - 48px) 44px);pointer-events:none}
+.menu-open .menu{clip-path:circle(150% at calc(100% - 48px) 44px);pointer-events:auto}
+.menu-info{opacity:0}
+.menu-open .menu-info{opacity:1}
+.mlink{display:flex;align-items:baseline;gap:22px;text-decoration:none;color:#282C2D;font-family:'Heebo',sans-serif;font-weight:400;font-size:clamp(34px,5vw,58px);line-height:1.35;padding:2px 0;border-bottom:1px solid rgba(40,44,45,.08);opacity:0;transform:translateY(30px);transition:opacity .6s ease calc(.15s + var(--i) * .06s),transform .8s cubic-bezier(.2,.8,.2,1) calc(.15s + var(--i) * .06s),color .3s,padding .4s}
+.menu-open .mlink{opacity:1;transform:translateY(0)}
+.mlink:hover{color:#4F6255;padding-right:14px}
+.mlink-num{font-family:'Jost',sans-serif;font-weight:300;font-size:13px;letter-spacing:.3em;color:#778B7E;min-width:34px}
+
+.modal-nav{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid #D9D3C8;background:none;font-family:'Assistant',sans-serif;font-size:15px;cursor:pointer;color:#282C2D}
+.modal-nav:hover{border-color:#4F6255;color:#4F6255}
+
+@media (prefers-reduced-motion: reduce){
+html{scroll-behavior:auto}
+.wave,.bob,.ball,.marq,.rv,.rvt,.sec-in,.heroout,.tube,.atom,.bond,.e1,.e2,.nucin{animation:none !important}
+}
