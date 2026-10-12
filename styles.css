@@ -143,10 +143,25 @@ details[open] .plus{transform:rotate(45deg)}
 .mlink:hover{color:#4F6255;padding-right:14px}
 .mlink-num{font-family:'Jost',sans-serif;font-weight:300;font-size:13px;letter-spacing:.3em;color:#778B7E;min-width:34px}
 
+/* AI section: what's offered today vs. still being built */
+.ai-status{display:inline-flex;align-items:center;gap:7px;margin-bottom:14px;padding:4px 11px;border-radius:999px;font-size:13px;font-weight:600;line-height:1.4}
+.ai-status::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.ai-live{background:rgba(150,172,158,.18);color:#B7C7BC;border:1px solid rgba(150,172,158,.45)}
+.ai-dev{background:transparent;color:#BDB8AF;border:1px dashed rgba(189,184,175,.55)}
+
 .modal-nav{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid #D9D3C8;background:none;font-family:'Assistant',sans-serif;font-size:15px;cursor:pointer;color:#282C2D}
 .modal-nav:hover{border-color:#4F6255;color:#4F6255}
+
+.skip-link{position:fixed;top:12px;right:12px;z-index:200;padding:12px 20px;border-radius:999px;background:#282C2D;color:#F9F7F3;font-family:'Assistant',sans-serif;font-weight:600;text-decoration:none;transform:translateY(-200%);transition:transform .2s}
+.skip-link:focus{transform:translateY(0);color:#F9F7F3}
+main:focus{outline:none}
+.foot-btn{background:none;border:1px solid #45494A;color:#BDB8AF;border-radius:999px;padding:0 18px;min-height:44px;font-family:'Assistant',sans-serif;font-size:14px;cursor:pointer}
+.foot-btn:hover{border-color:#96AC9E;color:#F9F7F3}
 
 @media (prefers-reduced-motion: reduce){
 html{scroll-behavior:auto}
 .wave,.bob,.ball,.marq,.rv,.rvt,.sec-in,.heroout,.tube,.atom,.bond,.e1,.e2,.nucin{animation:none !important}
 }
+/* Same as reduced motion, toggled by the "stop animations" button in the footer */
+html.no-motion{scroll-behavior:auto}
+.no-motion .wave,.no-motion .bob,.no-motion .ball,.no-motion .marq,.no-motion .rv,.no-motion .rvt,.no-motion .sec-in,.no-motion .heroout,.no-motion .tube,.no-motion .atom,.no-motion .bond,.no-motion .e1,.no-motion .e2,.no-motion .nucin{animation:none !important}

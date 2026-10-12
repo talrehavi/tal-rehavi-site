@@ -16,7 +16,7 @@
     timers.forEach(clearTimeout);
     timers = [];
     root.classList.remove('seam-on');
-    if (reduceMotion) { setPhase(3); return; }
+    if (reduceMotion || root.classList.contains('no-motion')) { setPhase(3); return; }
     setPhase(0);
     timers.push(setTimeout(function () { setPhase(1); }, 150));
     timers.push(setTimeout(function () { root.classList.add('seam-on'); }, 2150));
@@ -162,6 +162,22 @@
       menuBtn.focus();
     }
   });
+
+  /* ── Stop / resume animations (accessibility), remembered per visitor ── */
+  var motionBtn = $('motionBtn');
+  function syncMotionBtn() {
+    var off = root.classList.contains('no-motion');
+    motionBtn.setAttribute('aria-pressed', off ? 'true' : 'false');
+    motionBtn.textContent = off ? 'הפעלת אנימציות' : 'עצירת אנימציות';
+  }
+  motionBtn.addEventListener('click', function () {
+    var off = !root.classList.contains('no-motion');
+    root.classList.toggle('no-motion', off);
+    if (off) setPhase(3);
+    try { localStorage.setItem('tm-motion', off ? 'off' : 'on'); } catch (e) {}
+    syncMotionBtn();
+  });
+  syncMotionBtn();
 
   /* ── Replay the intro from the footer ── */
   $('replayBtn').addEventListener('click', function () {
