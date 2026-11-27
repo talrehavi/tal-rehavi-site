@@ -59,7 +59,7 @@ details[open] .plus{transform:rotate(45deg)}
 .aigrid{display:grid;grid-template-columns:minmax(0,1fr) 300px minmax(0,1fr);gap:56px 64px;align-items:center;position:relative}
 .ai1{grid-column:1;grid-row:1}.ai2{grid-column:3;grid-row:1}.ai3{grid-column:1;grid-row:2}.ai4{grid-column:3;grid-row:2}.ainuc{grid-column:2;grid-row:1 / span 2}
 @media (max-width:900px){.bento{grid-template-columns:1fr}.span4,.span2{grid-column:auto;grid-row:auto}.aigrid{grid-template-columns:1fr;gap:28px}.ai1,.ai2,.ai3,.ai4,.ainuc{grid-column:auto;grid-row:auto}.ainuc{order:-1}.aibonds{display:none}}
-@media (max-width:820px){.hero-vis{order:-1}}
+@media (max-width:820px){.hero-vis{max-width:340px;margin:-10px auto 0}.hero-vis .mol{width:min(340px,80vw) !important}}
 @media (max-width:640px){.hide-sm{display:none !important}.sec{border-radius:28px 28px 0 0;margin-top:-28px}}
 
 /* Scroll-driven reveals (browsers that support animation-timeline) */
@@ -165,3 +165,12 @@ html{scroll-behavior:auto}
 /* Same as reduced motion, toggled by the "stop animations" button in the footer */
 html.no-motion{scroll-behavior:auto}
 .no-motion .wave,.no-motion .bob,.no-motion .ball,.no-motion .marq,.no-motion .rv,.no-motion .rvt,.no-motion .sec-in,.no-motion .heroout,.no-motion .tube,.no-motion .atom,.no-motion .bond,.no-motion .e1,.no-motion .e2,.no-motion .nucin{animation:none !important}
+
+/* Mobile first screen: headline and call-to-action visible without scrolling */
+@media (max-width:640px){
+#top .heroout{padding-top:20px !important;gap:16px 40px !important}
+#top h1{font-size:40px !important}
+#top .heroout>div:first-child{gap:18px !important}
+#top .heroout>div:first-child>p{font-size:18px !important;line-height:1.6 !important}
+#top .btn-solid,#top .btn-line{padding:14px 24px !important;font-size:17px !important}
+}

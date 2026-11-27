@@ -102,11 +102,14 @@ const head = ({ title, description, url, type = 'website', image }) => `<!doctyp
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${url}">
-${image ? `<meta property="og:image" content="${SITE}/${image}">\n` : ''}<link rel="icon" type="image/png" href="/assets/logo.png">
+<meta property="og:image" content="${SITE}/${image || 'assets/og-image.png'}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&amp;family=Heebo:wght@300;500;600&amp;family=Jost:wght@300&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/blog.css">
+<script src="/analytics.js" async></script>
 <link rel="alternate" type="application/rss+xml" title="בלוג Tal Marketing" href="/blog/rss.xml">
 </head>
 <body>
