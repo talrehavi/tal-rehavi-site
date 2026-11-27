@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://talmarketing.co.il/sitemap.xml

@@ -107,6 +107,7 @@ ${image ? `<meta property="og:image" content="${SITE}/${image}">\n` : ''}<link r
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&amp;family=Heebo:wght@300;500;600&amp;family=Jost:wght@300&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/blog.css">
+<link rel="alternate" type="application/rss+xml" title="בלוג Tal Marketing" href="/blog/rss.xml">
 </head>
 <body>
 <a class="skip-link" href="#main">דילוג לתוכן הראשי</a>
@@ -179,9 +180,14 @@ for (const [i, p] of posts.entries()) {
     datePublished: p.date, inLanguage: 'he', mainEntityOfPage: url,
     author: { '@type': 'Person', name: 'טל רחבי', url: SITE }, ...(p.cover ? { image: `${SITE}/${p.cover}` } : {}),
   };
+  const crumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'בית', item: SITE },
+    { '@type': 'ListItem', position: 2, name: 'בלוג', item: `${SITE}/blog` },
+    { '@type': 'ListItem', position: 3, name: p.title, item: url },
+  ] };
   const others = posts.filter((_, j) => j !== i).slice(0, 2);
   const html = head({ title: `${p.title} | בלוג Tal Marketing`, description: p.description, url, type: 'article', image: p.cover })
-    + `<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
+    + [ld, crumbs].map((o) => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, '\\u003c')}</script>`).join('\n') + `
 <main id="main" tabindex="-1">
 <article class="b-post">
 <header class="b-post-head b-wrap">
@@ -220,5 +226,15 @@ writeFileSync(join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 ${urls.map((u) => `  <url><loc>${SITE}${u}</loc></url>`).join('\n')}
 </urlset>
 `);
+
+const rssDate = (d) => new Date(d + 'T08:00:00Z').toUTCString();
+writeFileSync(join(OUT, 'rss.xml'), `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+<title>בלוג Tal Marketing</title><link>${SITE}/blog</link><language>he</language>
+<description>שיווק דיגיטלי, פרסום ממומן, אתרים ו-AI לעסקים – טל רחבי</description>
+${posts.map((p) => `<item><title>${esc(p.title)}</title><link>${SITE}/blog/${p.slug}</link><guid>${SITE}/blog/${p.slug}</guid><pubDate>${rssDate(p.date)}</pubDate><description>${esc(p.description)}</description></item>`).join('\n')}
+</channel></rss>
+`);
+writeFileSync(join(ROOT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 
 console.log(`Built ${posts.length} post(s) → blog/`);
